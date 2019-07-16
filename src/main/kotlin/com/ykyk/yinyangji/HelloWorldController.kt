@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class HelloWorldController {
-
+    @RequestMapping("/help")
+    @ResponseBody
+    fun help(): String {
+        return "请使用<a href=\"http://tstsolykyk.com/jiegua?code=1,2,3,2,1,1\">[ 该链接 ]</a>其中数字表示每次字面的个数"
+    }
 
     var qureyStr = ""
     //字面个数,3个表示老阴,2个表示阳爻,1个表示阴爻,0个表示老阳
