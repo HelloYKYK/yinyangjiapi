@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    <p>初爻有<input type="number" th:field="*{id1}" />个花面</p>
+    <p>二爻有<input type="number" th:field="*{id2}" />个花面</p>
+    <p>三爻有<input type="number" th:field="*{id3}" />个花面</p>
+    <p>四爻有<input type="number" th:field="*{id4}" />个花面</p>
+    <p>五爻有<input type="number" th:field="*{id5}" />个花面</p>
+    <p>上爻有<input type="number" th:field="*{id6}" />个花面</p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

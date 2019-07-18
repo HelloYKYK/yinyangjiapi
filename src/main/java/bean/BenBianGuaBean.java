@@ -30,23 +30,28 @@ public class BenBianGuaBean {
     public GuaDesc getBianGua(GuaDesc benGua) {
 //        GuaDesc.Yao[] bianYaos = new GuaDesc.Yao[6];
 //        GuaDesc.Yao[] benYaos = benGua.yaos;
+        int bianYaoCount = 0;
         int[] yaoIntBen = benGua.yaoInt;
         int[] bianYaos = new int[6];
         for (int i = 0; i < yaoIntBen.length; i++) {
             bianYaos[i] = yaoIntBen[i];
             if (yaoIntBen[i] == 0) {//老阳
                 bianYaos[i] = 3;
+                bianYaoCount++;
             }
             if (yaoIntBen[i] == 3) {//老阴
                 bianYaos[i] = 0;
+                bianYaoCount++;
             }
         }
-
-        return new GuaDesc(bianYaos);
+        GuaDesc guaDesc = new GuaDesc(bianYaos);
+        guaDesc.bianYaoCount = bianYaoCount;
+        return guaDesc;
     }
 
 
     public static class GuaDesc {
+        public int bianYaoCount;
         public Yao[] yaos = new Yao[6];
         public int[] yaoInt = new int[6];
         public int yaoTag = 0;//用来标识变爻位置，1，2 ，4 ，8 ，16 ，64
