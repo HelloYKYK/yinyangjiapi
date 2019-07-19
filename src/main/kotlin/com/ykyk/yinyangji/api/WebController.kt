@@ -2,16 +2,15 @@ package com.ykyk.yinyangji.api
 
 import bean.BenBianGuaBean
 import bean.DescGuaBean
-import bean.G64IndexBean
 import bean.Greeting
-import com.google.gson.Gson
 import com.ykyk.yinyangji.dao.Gua
 import com.ykyk.yinyangji.dao.GuaRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.*
-import java.lang.Exception
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import java.util.*
 
 /**
@@ -24,20 +23,19 @@ open class WebController(
 ) {
 
 
-
     fun quaryGua(code: String): DescGuaBean {
 
         val intArray = code.toCharArray().map { char -> char.toString().toInt() }.toIntArray()
 
         val guaDesc = BenBianGuaBean.GuaDesc(intArray)
         val benBianGua = BenBianGuaBean()
-        benBianGua.benGua=guaDesc
-        benBianGua.bianGua=benBianGua.getBianGua(guaDesc)
+        benBianGua.benGua = guaDesc
+        benBianGua.bianGua = benBianGua.getBianGua(guaDesc)
         benBianGua.bianyaoCount = benBianGua.bianGua.bianYaoCount
 
 
         val id = guaDesc.id
-        val longId:Long =id.toLong()
+        val longId: Long = id.toLong()
         val benGua = guaRepository.findByMyId(longId)
 
 
@@ -52,9 +50,9 @@ open class WebController(
 
     private fun duanGua(benBianGuaBean: BenBianGuaBean, benGua: Gua, bianGua: Gua, bianyaoCount: Int): DescGuaBean {
         val yaoInts = benBianGuaBean.benGua.yaoInt//本卦的0123 code值,1为阳,2为阴,3为老阳
-        var mTvGTitle: String =""
-        var mtvGName: String=""
-        var mTvGDesc: String=""
+        var mTvGTitle: String = ""
+        var mtvGName: String = ""
+        var mTvGDesc: String = ""
         when (bianyaoCount) {
             0//六爻安定的，以本卦卦辞断之。
             -> {
@@ -77,23 +75,23 @@ open class WebController(
                     }
                     2 -> {
                         s = if (benBianGuaBean.benGua.yaos[1].yinYang == 1) "九二" else "六二"
-                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(1) ?:   "")
+                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(1) ?: "")
                     }
                     4 -> {
                         s = if (benBianGuaBean.benGua.yaos[2].yinYang == 1) "九三" else "六三"
-                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(2) ?:  "")
+                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(2) ?: "")
                     }
                     8 -> {
                         s = if (benBianGuaBean.benGua.yaos[3].yinYang == 1) "九四" else "六四"
-                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(3) ?:  "")
+                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(3) ?: "")
                     }
                     16 -> {
                         s = if (benBianGuaBean.benGua.yaos[4].yinYang == 1) "九五" else "六五"
-                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(4) ?:  "")
+                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(4) ?: "")
                     }
                     32 -> {
                         s = if (benBianGuaBean.benGua.yaos[5].yinYang == 1) "上九" else "上六"
-                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(5) ?:  "")
+                        yaoStr = s + "：" + (asArra(benGua.rows)?.get(5) ?: "")
                     }
                 }
                 mTvGDesc = yaoStr
@@ -166,7 +164,7 @@ open class WebController(
                     mTvGDesc = "卦辞:" + bianGua.desc + "\n ,卦爻:" + bianGua.rows
                 }
         }
-        return DescGuaBean(mTvGTitle,mtvGName,mTvGDesc)
+        return DescGuaBean(mTvGTitle, mtvGName, mTvGDesc)
     }
 
 
@@ -181,10 +179,7 @@ open class WebController(
     }
 
 
-
-
-
-    @RequestMapping("/greeting")
+    @RequestMapping("/suangua")
     fun greetingForm(model: Model): String {
         model.addAttribute("greeting", Greeting())
         return "greeting"
@@ -194,7 +189,7 @@ open class WebController(
     fun greetingSubmit(@ModelAttribute greeting: Greeting): String {
         val s = "${greeting.id1}${greeting.id2}${greeting.id3}${greeting.id4}${greeting.id5}${greeting.id6}"
         val quaryGua = quaryGua(s)
-        greeting.descGuaBean =quaryGua
+        greeting.descGuaBean = quaryGua
         return "result"
     }
 }

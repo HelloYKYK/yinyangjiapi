@@ -5,15 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Form</h1>
+<h1>使用方法:</h1>
+<p style="color:green">使用三枚铜钱,集中意念,掷六次,每掷一次将所得[花面]的次数填写在下面,第一次为初爻,第六次为上爻.完成后点击下方[解卦]</p>
 <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
-    <p>初爻有<input type="number" th:field="*{id1}" />个花面</p>
-    <p>二爻有<input type="number" th:field="*{id2}" />个花面</p>
-    <p>三爻有<input type="number" th:field="*{id3}" />个花面</p>
-    <p>四爻有<input type="number" th:field="*{id4}" />个花面</p>
-    <p>五爻有<input type="number" th:field="*{id5}" />个花面</p>
     <p>上爻有<input type="number" th:field="*{id6}" />个花面</p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p>五爻有<input type="number" th:field="*{id5}" />个花面</p>
+    <p>四爻有<input type="number" th:field="*{id4}" />个花面</p>
+    <p>三爻有<input type="number" th:field="*{id3}" />个花面</p>
+    <p>二爻有<input type="number" th:field="*{id2}" />个花面</p>
+    <p>初爻有<input type="number" th:field="*{id1}" />个花面</p>
+
+    <p><input type="submit" value="解卦" /> <input type="reset" value="重置" /></p>
 </form>
 </body>
 </html>

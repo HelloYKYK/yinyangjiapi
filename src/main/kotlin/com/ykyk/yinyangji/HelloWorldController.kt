@@ -21,7 +21,7 @@ class HelloWorldController {
     @RequestMapping("/help")
     @ResponseBody
     fun help(): String {
-        return "请使用<a href=\"http://tstsolykyk.com/jiegua?code=123231\">[ 该链接 ]</a>其中数字表示每次花面的个数"
+        return "请使用<a href=\"http://tstsolykyk.com/api?code=123231\">[ 该链接 ]</a>其中数字表示每次花面的个数"
     }
 
     var qureyStr = ""
@@ -29,7 +29,7 @@ class HelloWorldController {
     @RequestMapping("/jiegua", params = ["code"])
     @ResponseBody
     fun getCode(@RequestParam code: String): String {
-        qureyStr  = code.toCharArray().map { int ->
+        qureyStr = code.toCharArray().map { int ->
             when (int) {
                 '0' -> "老阴"
                 '1' -> "阳"
@@ -59,7 +59,7 @@ class HelloWorldController {
         for (gua in guaIndexBean.gList) {
             if (gua._id == id) {
                 print("有相等" + id)
-                return  qureyStr + " :" + gua.toString()
+                return qureyStr + " :" + gua.toString()
             }
         }
         print("无相等" + id)
