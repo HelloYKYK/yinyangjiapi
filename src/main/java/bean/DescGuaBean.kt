@@ -8,4 +8,7 @@ package bean
  */
 class DescGuaBean (val mTvGTitle: String,
                    val mtvGName: String,
-                   val mTvGDesc: String)
+                   val mTvGDesc: String
+                   ){
+    lateinit var mTvGuaXiang:String
+}

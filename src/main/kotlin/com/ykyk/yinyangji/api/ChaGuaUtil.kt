@@ -4,6 +4,7 @@ import bean.BenBianGuaBean
 import bean.DescGuaBean
 import com.ykyk.yinyangji.dao.Gua
 import com.ykyk.yinyangji.dao.GuaRepository
+import com.ykyk.yinyangji.toMyString
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.ArrayList
 
@@ -17,6 +18,14 @@ open class ChaGuaUtil (
         var guaRepository: GuaRepository
 ) {
     open fun quaryGua(code: String): DescGuaBean {
+        val queryStr = code.toCharArray().map { int ->
+            when (int) {
+                '0' -> "老阴"
+                '1' -> "阳"
+                '2' -> "阴"
+                else -> "老阳"
+            }
+        }.toMyString()
 
         val intArray = code.toCharArray().map { char -> char.toString().toInt() }.toIntArray().reversedArray()
         val guaDesc = BenBianGuaBean.GuaDesc(intArray)
@@ -35,7 +44,7 @@ open class ChaGuaUtil (
         val duanGua = duanGua(benBianGua, benGua, bianGua, benBianGua.bianyaoCount)
 
 
-
+        duanGua.mTvGuaXiang =queryStr
         return duanGua
     }
 

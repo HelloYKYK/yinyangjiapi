@@ -21,7 +21,7 @@ class HelloWorldController {
     @RequestMapping("/help")
     @ResponseBody
     fun help(): String {
-        return "请使用<a href=\"http://tstsolykyk.com/api?code=123231\">[ 该链接 ]</a>其中数字表示每次花面的个数"
+        return "请使用<a href=\"http://tstsolykyk.com/api?code=123231\">[ 该链接 ]</a>其中数字表示每次花面的个数,例如第一次抛为1个,最后一次抛为2个则是1****2"
     }
 
     var qureyStr = ""
