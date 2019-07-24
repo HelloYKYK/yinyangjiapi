@@ -1,9 +1,6 @@
-package com.ykyk.yinyangji.api
+package com.ykyk.yinyangji.controller
 
-import bean.BenBianGuaBean
-import bean.DescGuaBean
 import bean.Greeting
-import com.ykyk.yinyangji.dao.Gua
 import com.ykyk.yinyangji.dao.GuaRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -11,7 +8,6 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import java.util.*
 
 /**
  * 供查询的api

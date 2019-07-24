@@ -1,4 +1,4 @@
-package com.ykyk.yinyangji.api
+package com.ykyk.yinyangji.controller
 
 import bean.DescGuaBean
 import bean.G64IndexBean
@@ -38,7 +38,7 @@ open class ApiController(
     }
 
 
-    @RequestMapping("/api", params = ["code"])
+    @RequestMapping("/controller", params = ["code"])
     @ResponseBody
     fun getCode(@RequestParam code: String): DescGuaBean {
 

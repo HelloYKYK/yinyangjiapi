@@ -1,11 +1,10 @@
-package com.ykyk.yinyangji.api
+package com.ykyk.yinyangji.controller
 
 import bean.BenBianGuaBean
 import bean.DescGuaBean
 import com.ykyk.yinyangji.dao.Gua
 import com.ykyk.yinyangji.dao.GuaRepository
 import com.ykyk.yinyangji.toMyString
-import org.springframework.beans.factory.annotation.Autowired
 import java.util.ArrayList
 
 /**
