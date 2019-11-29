@@ -3,3 +3,5 @@
 ### http://tstsolykyk.com/jiegua?code=123221
 ## 算卦示例
 ### http://tstsolykyk.com/suangua
+## html所有文件在
+### /src/main/resources/static下面
