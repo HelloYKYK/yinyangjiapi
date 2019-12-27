@@ -11,4 +11,6 @@
 1.gradle --> build --> bootJar
 2./build/libs/yinyangji-***.jar
 3.登录服务器，上传jar包
+scp /Users/yiche/work/spring/yinyangji/build/libs/yinyangji-0.0.1-SNAPSHOT.jar     ubuntu@118.25.24.178:/home/ubuntu/upload/yinyangji-201912271036-SNAPSHOT.jar
+4.运行下列命令，查看log.log
 nohup java -jar yinyangji-0.0.1-SNAPSHOT.jar  > log.log 2>&1 &
